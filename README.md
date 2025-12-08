@@ -3,7 +3,9 @@
 English / Français — Full-stack course platform with JWT auth, enrollments, reviews, and admin course management.
 
 ## Demo / Démo
-![Demo](client/src/assets/22.gif)
+<!-- Animated video preview (GIF) -->
+![Video Demo](client/src/assets/22.gif)
+- Demo asset path (video GIF): `client/src/assets/22.gif`
 
 ## What's Inside / Contenu
 - Auth (register, login, `/auth/me`) with JWT + roles (admin/user)
