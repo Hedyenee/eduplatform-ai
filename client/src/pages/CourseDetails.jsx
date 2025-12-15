@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
 import Swal from 'sweetalert2';
+import SimilarCourses from '../components/SimilarCourses';
 
 function CourseDetails() {
   const { id } = useParams();
@@ -120,21 +121,37 @@ function CourseDetails() {
         <p><strong>Étudiants inscrits:</strong> {course.students.length}</p>
       </div>
 
-      <button
-        onClick={handleEnroll}
-        style={{
-          marginTop: '20px',
-          padding: '15px 30px',
-          backgroundColor: '#27ae60',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontSize: '16px'
-        }}
-      >
-        S'inscrire au cours
-      </button>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+        <button
+          onClick={handleEnroll}
+          style={{
+            padding: '15px 30px',
+            backgroundColor: '#27ae60',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            fontSize: '16px'
+          }}
+        >
+          S'inscrire au cours
+        </button>
+
+        <Link
+          to={`/courses/${id}/analysis`}
+          style={{
+            display: 'inline-block',
+            padding: '15px 30px',
+            backgroundColor: '#9b59b6',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontSize: '16px'
+          }}
+        >
+          Voir l'Analyse IA
+        </Link>
+      </div>
 
       <h2 style={{ marginTop: '40px' }}>Avis des étudiants</h2>
 
@@ -221,6 +238,8 @@ function CourseDetails() {
           </form>
         </div>
       )}
+
+      <SimilarCourses courseId={id} />
 
       {/* Liste des reviews */}
       <div style={{ marginTop: '20px' }}>
